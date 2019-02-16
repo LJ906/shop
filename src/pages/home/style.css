@@ -1,0 +1,33 @@
+.home .container,
+.home .aside,
+.home .aside-menu,
+.home {
+  height: 100%;
+}
+
+.header {
+  line-height: 60px;
+  background-color: #fff;
+}
+
+.header-title {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+a:-webkit-any-link {
+  color: #333;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.header .logo {
+  height: 60px;
+  text-align: center;
+  font: 700 italic 22px/60px microsoft yahei;
+  color:lightseagreen;
+}
+
+.main {
+  background-color: #E9EEF3;
+}

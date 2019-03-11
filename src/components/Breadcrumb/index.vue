@@ -14,8 +14,7 @@
 </template>
 
 <script>
-// import { generateTitle } from '@/utils/i18n'
-
+// 多语言i18n 调用 {{$t('user.name')}}
 export default {
   name: 'breadcrumb',
   data() {

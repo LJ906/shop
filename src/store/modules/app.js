@@ -34,6 +34,8 @@ const app = {
     SET_LANGUAGE: (state, language) => {
       state.language = language
       Cookies.set('language', language)
+      console.log('language', language);
+      
     },
     SET_SIZE: (state, size) => {
       state.size = size

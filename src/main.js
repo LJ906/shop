@@ -13,6 +13,8 @@ Vue.use(ElementUI)
 
 // 多语言切换
 import i18n from './assets/i18n'
+// import './icons' // 引入 icon
+
 // 富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
@@ -20,8 +22,6 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor, /* { default global options } */)
 
-// cookie设置插件
-import Cookies from 'js-cookie'
 
 Vue.config.productionTip = false
 

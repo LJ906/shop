@@ -6,6 +6,7 @@
     <sidebar class="sidebar-container"/>
     <div class="main-container">
       <navbar/>
+      
     </div>
   </div>
 </template>

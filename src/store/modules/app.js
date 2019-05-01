@@ -1,5 +1,5 @@
+// app.js 控制全局设置项：sidebar是否折叠,  device设备类型, language, 屏幕的size 
 import Cookies from 'js-cookie'
-// app.js 控制全局设置项：sidebar是否折叠,  device设备烈性, language, size ?
 
 const app = {
   state: {

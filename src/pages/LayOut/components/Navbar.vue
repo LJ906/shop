@@ -80,6 +80,7 @@ export default {
   .navbar {
     height: 50px;
     overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.12), 0 0 3px 0 rgba(0,0,0,.04);
     .hamburger-container {
       line-height: 46px;
       height: 100%;

@@ -6,7 +6,7 @@
     <sidebar class="sidebar-container"/>
     <div class="main-container">
       <navbar/>
-      
+      <app-main/>
     </div>
   </div>
 </template>
@@ -14,11 +14,18 @@
 <script>
 import Sidebar from './components/sidebar'
 import Navbar from './components/Navbar'
+import AppMain from './components/AppMain'
 export default {
   name: 'layout',
   components: {
     Sidebar,
-    Navbar
+    Navbar,
+    AppMain
+  },
+  mounted () {
+    console.log(' Path', this.$route.path);
+    console.log('fullPath', this.$route.fullPath);
+    
   },
   computed: {
     sidebar () {

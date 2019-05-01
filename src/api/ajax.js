@@ -1,5 +1,25 @@
 import axios from 'axios'
 
+// axios.baseURL='api'
+
+// 添加请求拦截器（配置token）
+axios.interceptors.request.use(function (config) {
+  // 多有的请求都添加token记录本地？存在vuex里
+  config.headers['Authorization'] =  localStorage.getItem('TOKEN')
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});
+
+// 添加响应拦截器 （响应返回固定错误的code的时候 跳转某个页面
+axios.interceptors.response.use(function (response) {
+  // 对响应数据做点什么
+  return response;
+}, function (error) {
+  return Promise.reject(error);
+});
+
 // 封装get请求和post请求
 export default function request (type = 'GET',url = '', params = {}, responseType='json' ) {
  let promise,

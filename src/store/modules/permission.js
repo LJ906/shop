@@ -13,22 +13,22 @@ import routerComponents from '@/router/routerComponents'
  * 把后台传来的字符串组件名字转为组件对象。
  * @param {*} asyncRouterMap 后台传来的路由字符串
  */
-function filterAsyncRouter (asyncRouterMap) { 
-  // 有权限的路由 递归子路由
-  const accessedRouters = asyncRouterMap.filter (route => {
-    if (route.component) {
-      route.component = routerComponents[route.component]
-    }
+// function filterAsyncRouter (asyncRouterMap) { 
+//   // 有权限的路由 递归子路由
+//   const accessedRouters = asyncRouterMap.filter (route => {
+//     if (route.component) {
+//       route.component = routerComponents[route.component]
+//     }
 
-    // 递归子路由
-    if (route.children && route.children.length) {
-      route.children = filterAsyncRouter(route.children)
-    }
-    return true
-  })
+//     // 递归子路由
+//     if (route.children && route.children.length) {
+//       route.children = filterAsyncRouter(route.children)
+//     }
+//     return true
+//   })
 
-  return accessedRouters
-}
+//   return accessedRouters
+// }
 
 export default {
   state: {
@@ -47,9 +47,10 @@ export default {
     // 拿到动态路由后调用此方法，将动态路由整合到静态路由中
     GenerateRoutes: ({commit}, data)=> {
       return new Promise(resolve => {
-        const accessedRouters = filterAsyncRouter(data)
-         commit('SET_ROUTERS', accessedRouters)
-        resolve()
+        // const accessedRouters = filterAsyncRouter(data)
+        //  commit('SET_ROUTERS', accessedRouters)
+          commit('SET_ROUTERS', data)
+          resolve()
       })
     }
   }

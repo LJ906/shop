@@ -4,8 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from "./store";
-// 引入
+
 import '@/style/index.scss' // global css
+
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -13,7 +14,7 @@ Vue.use(ElementUI)
 
 // 多语言切换
 import i18n from './assets/i18n'
-// import './icons' // 引入 icon
+import './icons' // 引入 icon
 
 // 富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'

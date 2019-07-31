@@ -90,18 +90,18 @@
 
 <script>
 export default {
-  data() {
-    return {
-			pageSize: 10,
-      total: 0,      
-      pagenum: 1, // 当前页码数默认1，推算offset起始位置
-      btnDisabled: false,
-      loading: false, 
-      queryData: {
-        authName: '',
-        level: ''
-      },
- 
+	data() {
+		return {
+				pageSize: 10,
+		total: 0,      
+		pagenum: 1, // 当前页码数默认1，推算offset起始位置
+		btnDisabled: false,
+		loading: false, 
+		queryData: {
+			authName: '',
+			level: ''
+		},
+	
 			dataList:[
 				{
 					authName: '名称1',
@@ -113,7 +113,7 @@ export default {
 							path: '/',
 							level: 1,
 						},
-					 {
+						{
 							authName: '名称4',
 							path: '/',
 							level: 1,
@@ -126,7 +126,7 @@ export default {
 					level: 1,
 				}
 			]
-    }
+		}
 	},
 	created () {
 

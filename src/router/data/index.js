@@ -3,30 +3,46 @@
 const Layout = () => import('@/pages/LayOut/layout')
 
 export const asyncRouterMap = [
-    {
-        path: '/',
-        redirect: '/home',
-    },
+    
     {
         path: '/home',
         component: Layout,
         redirect: '/rightList',
         name: '第一组',
-        meta: { title: '第一组', icon: 'el-icon-setting' },
+        meta: { title: '第一组', icon: 'edit' },
         children: [
             {
                 path: '/rightList',
                 component: () => import('@/pages/RightManage/rightList'),
                 name: 'rightList',
-                meta: { title: 'rightList', icon: '' } // title 写成 rightList 在i18n中配置具体的中英文
+                meta: { title: 'rightList', icon: 'icon' } // title 写成 rightList 在i18n中配置具体的中英文
             },
             {
-                path: '/emitDemo',
+                path: 'emitDemo',
+                component: () => import('@/pages/RightManage/rightList'),
+                name: 'rightList',
+                meta: { title: 'rightList', icon: 'icon' } // title 写成 rightList 在i18n中配置具体的中英文
+            },
+        ]
+    },
+    {
+        path:'/directive', 
+        name: 'directive', 
+        component: Layout, 
+        meta: {title: '自定义指令', icon: 'edit'},
+        children: [
+            {
+                path: 'emitDemo',
                 component: () => import('@/pages/emitDemo'),
                 name: 'EmitDemo',
-                meta: { title: 'EmitDemo', icon: '' } // title 写成 rightList 在i18n中配置具体的中英文
+                meta: { title: '自定义双向绑定指令', icon: '' }
             },
-
+            {
+                path: 'emitDemo2',
+                component: () => import('@/pages/emitDemo'),
+                name: 'EmitDemo2',
+                meta: { title: '自定义双向绑定指令', icon: '' }
+            },
         ]
     },
 

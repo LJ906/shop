@@ -20,27 +20,30 @@ Vue.use(Router)
  **/
 
 export const constantRouterMap = [
-  {
-    path: '/login',
-    name: 'login',
-    hidden: true,
-    component: () => import('@/pages/login')
-  },
-  asyncRouterMap,
-  {
-    path: '/404',
-    name: 'Page404',
-    hidden: true,
-    component: () => import('@/pages/errorPage/404')
-  },
-  {
-    path: '*', // 放到最后
-    redirect: '/404',
-    hidden: true,
-  },
+    {
+      path: '/',
+      redirect: '/home',
+    },
+    {
+        path: '/login',
+        name: 'login',
+        hidden: true,
+        component: () => import('@/pages/login')
+    },
+    {
+        path: '/404',
+        name: 'Page404',
+        hidden: true,
+        component: () => import('@/pages/errorPage/404')
+    },
+    {
+        path: '*', // 放到最后
+        redirect: '/404',
+        hidden: true,
+    },
 ]
 export default new Router({
-  routes: constantRouterMap
+  routes: asyncRouterMap.concat(constantRouterMap)
 })
 
 // 后续获取到动态路由后contact 到 constantRouterMap中

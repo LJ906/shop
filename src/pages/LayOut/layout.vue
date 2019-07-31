@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Sidebar from './components/sidebar'
+import Sidebar from '@/components/Sidebar'
 import Navbar from './components/Navbar'
 import AppMain from './components/AppMain'
 export default {

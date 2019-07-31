@@ -1,5 +1,5 @@
 <template>
-  <section class="app-mian">
+  <section class="app-main">
     <transition name="fade-transform" mode="out-in">
       <!-- 需要缓存的路由  -->
       <!-- <kee-alive v-if="$route.meta.keepAlive">
@@ -21,6 +21,7 @@ export default {
 .app-main {
   /* navbar 高度50px */
   min-height: calc(100vh - 50px);
+  padding: 20px;
   width: 100%;
   position: relative;
   overflow: hidden;

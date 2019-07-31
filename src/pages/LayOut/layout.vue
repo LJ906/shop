@@ -23,9 +23,6 @@ export default {
     AppMain
   },
   mounted () {
-    console.log(' Path', this.$route.path);
-    console.log('fullPath', this.$route.fullPath);
-    
   },
   computed: {
     sidebar () {

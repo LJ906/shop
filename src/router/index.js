@@ -1,89 +1,37 @@
 // lj router
 import Vue from 'vue'
 import Router from 'vue-router'
-
-import routerComponents from './routerComponents'
-const Login = () => import('@/pages/login')
-// const I18n = () => import('@/pages/myself/i18n')
-// const RichText = () => import('@/pages/myself/richText')
-// const Mself = () => import('@/pages/myself')
-const Page404 = () => import('@/pages/errorPage/404')
-// const Page401 = () => import('@/pages/errorPage/401')
-
+import {asyncRouterMap} from './data/index'
 const Layout = () => import('@/pages/LayOut/layout')
-const RightList = () => import('@/pages/RightManage/rightList')
-const EmitDemo = () => import('@/pages/emitDemo')
 Vue.use(Router)
-
 /**
- * hidden: true   是否隐藏左侧的菜单sideBar， false即显示， true 隐藏。 默认false即不写显示菜单
- * 
- */
+ * 是否隐藏左侧的菜单sideBar， false即显示， true 隐藏。 默认false即不写显示菜单
+ * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
+ * alwaysShow: true               if set true, will always show the root menu, whatever its child routes length
+ *                                if not set alwaysShow, only more than one route under the children
+ *                                it will becomes nested mode, otherwise not show the root menu
+ * redirect: noredirect           if `redirect:noredirect` will no redirect in the breadcrumb
+ * name:'router-name'             the name is used by <keep-alive> (must set!!!)
+ * meta : {
+    title: 'title'               the name show in submenu and breadcrumb (recommend set)
+    icon: 'svg-name'             the icon show in the sidebar
+    breadcrumb: false            if false, the item will hidden in breadcrumb(default is true)
+  }
+ **/
+
 export const constantRouterMap = [
   {
     path: '/login',
     name: 'login',
     hidden: true,
-    component: Login
+    component: () => import('@/pages/login')
   },
-  {
-    path: '/',
-    component: routerComponents.Layout,
-    hidden: true,
-    redirect: '/rightManage/rightList'
-  },
-  {
-    path: '/rightManage',
-    component: routerComponents.Layout,
-    redirect: 'rightList',
-    name: 'rightManage',
-    meta: {
-      title: 'rightManage',
-      icon: ''
-    },
-    children: [
-      {
-        path: 'rightList',
-        component: routerComponents.RightList,
-        name: 'rightList',
-        meta: { title: 'rightList' , icon: ''} // title 写成 rightList 在i18n中配置具体的中英文
-      },
-      
-    ]
-  },
-  {
-    path: '/emitDemo',
-    component: EmitDemo,
-    name: 'EmitDemo',
-    meta: { title: 'EmitDemo', icon: '' } // title 写成 rightList 在i18n中配置具体的中英文
-  },
-  // {
-  //   path: '/myself',
-  //   name: 'myselft',
-  //   component: routerComponents.Mself,
-  //   hidden: true,
-  //   meta: { title: 'myselft', icon: '' },
-  //   children: [
-  //     {
-  //       path: 'i18n',
-  //       name: 'i18n',
-  //       component: routerComponents.I18n,
-  //       meta: { title: 'myselft', icon: '' },
-  //     },
-  //     {
-  //       path: 'richText',
-  //       name: 'richText',
-  //       component: routerComponents.RichText,
-  //       meta: { title: 'myselft', icon: '' },
-  //     }
-  //   ]
-  // },
-  // 404页面
+  asyncRouterMap,
   {
     path: '/404',
     name: 'Page404',
     hidden: true,
-    component: Page404
+    component: () => import('@/pages/errorPage/404')
   },
   {
     path: '*', // 放到最后

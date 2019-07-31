@@ -5,11 +5,13 @@
 </template>
 
 <script>
+ 
 export default {
     name: 'echarts',
+    components: {
+    },
     data () {
         return {
-            
         }
     }
 }

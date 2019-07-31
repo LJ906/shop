@@ -9,23 +9,8 @@
       :text-color="variables.menuText"
       mode="vertical"
       :active-text-color="variables.menuActiveText">
-      <!-- 动态输出侧边栏 -->
-      <el-submenu
-        v-for="(level1, i) in routeMenus"
-        :key="i"
-        :index="level1.path">
-        <template slot="title" >
-          <i class="el-icon-location">{{level1.path}}</i>
-          <span v-if="!level1.hideOnSideBar">{{ $t('generateTitle.'+[level1.meta.title])  }}</span>
-        </template>
-          <el-menu-item  
-            v-for="(level2, i) in level1.children"
-            :key="i"
-            :index="level1.path + '/'+level2.path">
-            <span>{{ $t('generateTitle.'+[level2.meta.title]) + 'path:' +level2.path}} </span>
-          </el-menu-item>
-      </el-submenu>
-    </el-menu>
+        <menu-item v-for="menu in routeMenus" :menu="menu" :key="menu.path"></menu-item>
+    </el-menu> 
   </div>
 </template>
 
@@ -34,94 +19,15 @@
 import variables from '@/style/variables.scss'
 import { mapGetters } from 'vuex'
 import {asyncRouterMap} from '@/router/data' // 模拟后台返回的动态路由表
+import menuItem from './menuItem'
+
 export default {
   name: 'sidebar',
+  components: {
+    menuItem
+  },
   data () {
     return {
-      // 权限列表
-      menus: [
-        {
-          "id": 101,
-          "authName": "权限管理",
-          "path": "/rightManage",
-          meta: { title: '权限管理', icon: '' },
-          "children": [
-            {
-              "id": 112,
-              "authName": "权限列表",
-              meta: { title: '权限列表', icon: '' },
-              "path": "/rightManage/rightList",
-              "children": []
-            },
-            {
-              "id": 111,
-              "authName": "角色列表",
-              meta: { title: '角色列表', icon: '' },
-              "path": "/rightManage/roleList",
-              "children": []
-            }             
-          ]
-        },
-        {
-          "id": 102,
-          "authName": "商品管理",
-          meta: { title: '商品管理', icon: '' },
-          "path": "/productManage",
-          "children": [
-            {
-              "id": 104,
-              "authName": "商品列表",
-              meta: { title: '商品管理', icon: '' },
-              "path": "/productList",
-              "children": []
-            },
-            {
-              "id": 105,
-              "authName": "分类参数",
-              meta: { title: '商品管理', icon: '' },
-              "path": "/categorieParams",
-              "children": []
-            },
-            {
-              "id": 106,
-              "authName": "商品分类",
-              meta: { title: '商品管理', icon: '' },
-              "path": "/productCategories",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": 103,
-          "authName": "订单管理",
-          meta: { title: '商品管理', icon: '' },
-          "path": "/order",
-          "children": [
-            {
-              "id": 131,
-              "authName": "订单列表",
-              meta: { title: '商品管理', icon: '' },
-              "path": "/order",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": 104,
-          "authName": "数据统计",
-          meta: { title: '商品管理', icon: '' },
-          "path": "/order",
-          "children": [
-            {
-              "id": 141,
-              "authName": "数据报表",
-              meta: { title: '商品管理', icon: '' },
-              "path": "/order",
-              "children": []
-            }
-          ]
-        }
-      ]
     }
   }, 
   created() {
@@ -140,6 +46,7 @@ export default {
     }, 
     isCollapse () {
       // 菜单栏是否需要折叠
+    //   console.log('iscollapse', !this.sidebar.opened)
       return !this.sidebar.opened
     },
     routeMenus() {
@@ -152,5 +59,5 @@ export default {
 </script>
 
 <style>
-
+ 
 </style>
